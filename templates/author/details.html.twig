@@ -1,0 +1,25 @@
+{# templates/author/list.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Auteurs</title>
+</head>
+<body>
+    <h1>Liste des Auteurs</h1>
+   
+        <ul>
+            
+                <li>
+                    <img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="100">
+                    <p>Nom: {{ author.username | upper }}</p>
+                    <p>Email: {{ author.email }}</p>
+                    <p>Nombre de livres: {{ author.nb_books }}</p>
+                        <a href="{{ path('list_authors') }}">Retour à la liste des auteurs</a>
+
+                
+                </li>
+        
+        </ul>
+    
+</body>
+</html>
