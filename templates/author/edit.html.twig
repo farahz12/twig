@@ -1,0 +1,18 @@
+{# templates/author/edit.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Author</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <h1>Edit Author: {{ author.username }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Save Changes</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('list_authors') }}">Back to Author List</a>
+</body>
+</html>

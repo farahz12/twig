@@ -1,0 +1,15 @@
+{# templates/student/add.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter un Étudiant</title>
+</head>
+<body>
+    <h1>Ajouter un Étudiant</h1>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Ajouter</button>
+    {{ form_end(form) }}
+    <a href="{{ path('list_students') }}">Retour à la liste des étudiants</a>
+</body>
+</html>
