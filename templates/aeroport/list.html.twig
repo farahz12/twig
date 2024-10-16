@@ -39,7 +39,7 @@
                     <td>{{ aeroport.ville }}</td>
                     <td>
                         <a href="{{ path('edit_aeroport', {id: aeroport.id}) }}">Éditer</a>
-                        <a href="{{ path('add_aeroport') }}" ">Ajouter</a>
+                     
                     </td>
                 </tr>
             {% else %}
@@ -49,5 +49,5 @@
             {% endfor %}
         </tbody>
     </table>
-
+   <a href="{{ path('add_aeroport') }}" ">Ajouter</a>
 {% endblock %}
