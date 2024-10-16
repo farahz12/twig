@@ -1,0 +1,11 @@
+{# templates/aeroport/edit.html.twig #}
+
+
+<h1>Modifier l'Aéroport</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" >Modifier</button>
+{{ form_end(form) }}
+
+<a href="{{ path('list_aeroports') }}" >Retour à la liste</a>

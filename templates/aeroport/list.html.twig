@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des aéroports{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: white; 
+        }
+
+        table {
+            width: 100%;
+          
+        }
+
+        th, td {
+            border: 1px solid ;
+            
+        }
+
+    </style>
+
+    <h1>Liste des aéroports</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aeroport in aeroports %}
+                <tr>
+                    <td>{{ aeroport.id }}</td>
+                    <td>{{ aeroport.nom }}</td>
+                    <td>{{ aeroport.ville }}</td>
+                    <td>
+                        <a href="{{ path('edit_aeroport', {id: aeroport.id}) }}">Éditer</a>
+                        <a href="{{ path('add_aeroport') }}" ">Ajouter</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td >Aucun aéroport trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

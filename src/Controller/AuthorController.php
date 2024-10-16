@@ -40,8 +40,7 @@ class AuthorController extends AbstractController
             ]);
         }
 
-        // Optionally, if you have a 'nb_books' field in your Author entity
-        // $totalBooks = array_sum(array_column($authors, 'nb_books')); // Si nécessaire
+        // $totalBooks = array_sum(array_column($authors, 'nb_books')); 
 
         return $this->render('author/list.html.twig', [
             'authors' => $authors,
@@ -60,11 +59,10 @@ class AuthorController extends AbstractController
             $entityManager->persist($author);
             $entityManager->flush();
 
-            return $this->redirectToRoute('list_authors'); // Redirige vers la liste des auteurs
+            return $this->redirectToRoute('list_authors'); 
         }
-
-        return $this->render('author/add.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('author/add.html.twig', [
+            'form' => $form,
         ]);
     }
     #[Route('/author/edit/{id}', name: 'edit_author')]
@@ -78,14 +76,14 @@ public function editAuthor(int $id, Request $request, EntityManagerInterface $en
         throw $this->createNotFoundException('Aucun auteur trouvé pour cet identifiant '.$id);
     }
 
-    // Create the form for editing the author
+    
     $form = $this->createForm(AuthorType::class, $author);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->flush(); // Update the author in the database
+        $entityManager->flush(); 
 
-        return $this->redirectToRoute('list_authors'); // Redirect to the authors list
+        return $this->redirectToRoute('list_authors'); 
     }
 
     return $this->render('author/edit.html.twig', [
@@ -96,18 +94,18 @@ public function editAuthor(int $id, Request $request, EntityManagerInterface $en
 #[Route('/author/delete/{id}', name: 'delete_author')]
 public function deleteAuthor(int $id, EntityManagerInterface $entityManager): Response
 {
-    // Retrieve the author by ID
+    
     $author = $entityManager->getRepository(Author::class)->find($id);
 
-    // Check if the author exists
+   
     if (!$author) {
         throw $this->createNotFoundException('Aucun auteur trouvé pour cet identifiant '.$id);
     }
 
-    $entityManager->remove($author); // Remove the author from the database
-    $entityManager->flush(); // Apply the changes
+    $entityManager->remove($author); 
+    $entityManager->flush(); 
 
-    return $this->redirectToRoute('list_authors'); // Redirect to the authors list
+    return $this->redirectToRoute('list_authors'); 
 }
 
 }
